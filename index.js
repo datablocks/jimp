@@ -1022,6 +1022,7 @@ Jimp.colorDiff = (function () {
     var maxVal = (255 * 255 * 3);
 
     return function colorDiff (rgba1, rgba2) {
+        if(rgba1.a === 0 && rgba2.a === 0) return 0
         if (rgba1.a!==0 && !rgba1.a) rgba1.a = 255;
         if (rgba2.a!==0 && !rgba2.a) rgba2.a = 255;
         return (
@@ -1079,6 +1080,7 @@ Jimp.prototype.autocrop = function () {
     var westPixelsToCrop = 0;
 
     var rgba1 = Jimp.intToRGBA(colorTarget);
+    var rgba1Opaque = rgba1.a === 0
 
     north: // north side (scan rows from north to south)
     for (let y = 0; y < h - minPixelsPerSide; y++) {
