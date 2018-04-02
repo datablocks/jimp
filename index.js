@@ -1080,7 +1080,6 @@ Jimp.prototype.autocrop = function () {
     var westPixelsToCrop = 0;
 
     var rgba1 = Jimp.intToRGBA(colorTarget);
-    var rgba1Opaque = rgba1.a === 0
 
     north: // north side (scan rows from north to south)
     for (let y = 0; y < h - minPixelsPerSide; y++) {
